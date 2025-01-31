@@ -1,7 +1,7 @@
 {
   "name": "Study App",
   "short_name": "Study",
-  "start_url": "/study",  // 이 부분을 상대 경로로 변경해 주세요
+  "start_url": "hijiwho.github.io/study",  // 이 부분을 상대 경로로 변경해 주세요
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#000000",
