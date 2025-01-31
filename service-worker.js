@@ -1,12 +1,21 @@
-// service-worker.js
 self.addEventListener('install', (event) => {
-  console.log('Service Worker installed');
-});
-
-self.addEventListener('activate', (event) => {
-  console.log('Service Worker activated');
+    event.waitUntil(
+        caches.open('hello-world-cache').then((cache) => {
+            return cache.addAll([
+                '/',
+                '/index.html',
+                '/style.css',
+                '/icon-192x192.png',
+                '/icon-512x512.png',
+            ]);
+        })
+    );
 });
 
 self.addEventListener('fetch', (event) => {
-  event.respondWith(fetch(event.request));
+    event.respondWith(
+        caches.match(event.request).then((response) => {
+            return response || fetch(event.request);
+        })
+    );
 });
