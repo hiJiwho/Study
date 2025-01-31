@@ -1,17 +1,27 @@
 <!DOCTYPE html>
-<html lang="ko">
-<base href="/study/">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hello World PWA</title>
-    <link rel="manifest" href="manifest.json">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Study App</title>
+  <link rel="manifest" href="/manifest.json" />
+  <link rel="icon" href="icons/icon-192x192.png" />
 </head>
 <body>
-    <h1>Hello, World!</h1>
-    <p>This is my first PWA app.</p>
+  <h1>Study App</h1>
+  <p>Welcome to your study app!</p>
 
-    <script src="service-worker.js"></script>
+  <script>
+    // Service Worker 등록 코드
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/service-worker.js')
+        .then((registration) => {
+          console.log('Service Worker registered with scope:', registration.scope);
+        })
+        .catch((error) => {
+          console.log('Service Worker registration failed:', error);
+        });
+    }
+  </script>
 </body>
 </html>
